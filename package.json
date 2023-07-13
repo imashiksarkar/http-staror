@@ -1,0 +1,25 @@
+{
+  "name": "ts-playground",
+  "version": "1.0.0",
+  "description": "no description",
+  "main": "index.js",
+  "scripts": {
+    "dev:http": "ts-node-dev --transpile-only ./src/Http.ts",
+    "dev:error": "ts-node-dev --transpile-only ./src/Error.ts",
+    "build": "tsc",
+    "test": "vitest",
+    "test:once": "vitest run",
+    "raff": "node ./src/__raff__/raff.js",
+    "test:coverage": "vitest run --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.4.1",
+    "@vitest/coverage-v8": "^0.33.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.1.6",
+    "vitest": "^0.33.0"
+  }
+}
