@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import Http, { Status } from "../Http"
+import { Http, Status } from "../index"
 
 describe("Http", () => {
   it("should return http object correctly", () => {

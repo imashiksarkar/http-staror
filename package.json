@@ -9,7 +9,7 @@
     "build": "tsc",
     "test": "vitest",
     "test:once": "vitest run",
-    "raff": "node ./src/__raff__/raff.js",
+    "raff": "ts-node-dev --transpile-only ./src/__raff__/raff.ts",
     "test:coverage": "vitest run --coverage"
   },
   "keywords": [],

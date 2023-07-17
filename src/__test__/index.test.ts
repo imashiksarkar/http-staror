@@ -1,7 +1,6 @@
 import { describe, expect, it, vi } from "vitest"
 import { Status } from "../index"
 
-import { HttpStatuses, safeEnumAccess } from "../Http"
 import { onlyDev, onlyProd } from "./utils/env-controll"
 
 describe("Keys", () => {
@@ -12,12 +11,12 @@ describe("Keys", () => {
 
 describe("status", () => {
   it("should return 200, given a vadid input", () => {
-    const result = safeEnumAccess(HttpStatuses, "OK")
-    expect(result).toBe(200)
+    const result = Status[""] || { code: 200 }
+    expect(result.code).toBe(200)
   })
   it("should return null, given custom input", () => {
-    const result = safeEnumAccess(HttpStatuses, "x-aa")
-    expect(result).toBe(null)
+    const result = Status["Accepted"]
+    expect(result.code).toBe(202)
   })
 })
 

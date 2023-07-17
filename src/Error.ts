@@ -1,8 +1,8 @@
 import Http, {
-  HttpStatuses,
-  IStatus,
-  StatusTypes,
-  safeEnumAccess,
+  Status,
+  type IStatus,
+  type setStatusParamType,
+  type ExtendedHttpStatusKeysType,
 } from "./Http"
 
 interface IError extends IStatus {
@@ -45,11 +45,14 @@ class Err extends Http implements IErrorPrototype {
     Err.#isProductionStatic = null
   }
 
-  static readonly setStatus = (status: StatusTypes) => {
+  static readonly setStatus = (status: setStatusParamType) => {
+    if (status instanceof Object)
+      status = status.value as ExtendedHttpStatusKeysType
     const __proto__ = new Err()
     const statusObj = Object.create(__proto__) as IErrorPrototype
     statusObj.status = status
-    statusObj.statusCode = safeEnumAccess(HttpStatuses, status) || 200
+    statusObj.statusCode =
+      status in Status ? Status[status as keyof typeof Status].code : 200
     statusObj.message = status
     statusObj.isProduction = __proto__.isProduction
     statusObj.isOperational = false

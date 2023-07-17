@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest"
-import Err from "../Error"
-import { Status } from "../Http"
+
+import { Err, Status } from "../index"
 import { onlyDev, onlyProd } from "./utils/env-controll"
 
 describe("Err", () => {
