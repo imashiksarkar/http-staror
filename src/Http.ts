@@ -121,6 +121,9 @@ class Http implements IStatusPrototype {
     // if status param is an onject then the value would be a string that exists inside of HttpStatuses
     if (status instanceof Object)
       status = status.value as ExtendedHttpStatusKeysType
+    // remove x- if it is a custom status
+    else if (status.startsWith("x-"))
+      status = status.slice(2) as ExtendedHttpStatusKeysType
 
     const statusObj = Object.create(new Http()) as IStatusPrototype
     statusObj.status = status

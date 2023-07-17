@@ -36,15 +36,15 @@ describe("Http", () => {
   it("should return status code of 200 if it is a custom status and status code is not set manually", () => {
     const http = Http.setStatus("x-custom")
     expect(http).toEqual({
-      status: "x-custom",
+      status: "custom",
       statusCode: 200,
-      message: "x-custom",
+      message: "custom",
     })
   })
   it("should return message as custom", () => {
     const http = Http.setStatus("x-custom").setMessage("custom")
     expect(http).toEqual({
-      status: "x-custom",
+      status: "custom",
       statusCode: 200,
       message: "custom",
     })
@@ -52,9 +52,9 @@ describe("Http", () => {
   it("should return status code of 500", () => {
     const http = Http.setStatus("x-custom").setStatusCode(500)
     expect(http).toEqual({
-      status: "x-custom",
+      status: "custom",
       statusCode: 500,
-      message: "x-custom",
+      message: "custom",
     })
   })
 })

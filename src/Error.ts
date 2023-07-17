@@ -46,8 +46,13 @@ class Err extends Http implements IErrorPrototype {
   }
 
   static readonly setStatus = (status: setStatusParamType) => {
+    // if status param is an onject then the value would be a string that exists inside of HttpStatuses
     if (status instanceof Object)
       status = status.value as ExtendedHttpStatusKeysType
+    // remove x- if it is a custom status
+    else if (status.startsWith("x-"))
+      status = status.slice(2) as ExtendedHttpStatusKeysType
+
     const __proto__ = new Err()
     const statusObj = Object.create(__proto__) as IErrorPrototype
     statusObj.status = status
