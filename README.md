@@ -25,7 +25,7 @@ Http.setStatus("Accepted").setStatusCode(500).setMessage("It is accepted") // { 
 ```
 
 ```typescript
-Http.setStatus("x-hello").setStatusCode(303).setMessage("custom status") // { status: 'x-hello', statusCode: 303, message: 'custom status' }
+Http.setStatus("x-hello").setStatusCode(303).setMessage("custom status") // { status: 'hello', statusCode: 303, message: 'custom status' }
 
 // Note: To set a custom status you must prefix with "x-" also you have to set a status code otherwise it will be set to 200
 ```
