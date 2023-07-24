@@ -86,7 +86,7 @@ const HttpStatuses = {
 } as const
 
 // single value object type on HttpStatuses
-interface IHttpStatus {
+export interface IHttpStatus {
   value: keyof typeof HttpStatuses
   code: number
 }
