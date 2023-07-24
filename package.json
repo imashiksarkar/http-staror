@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "no description",
   "main": "lib/index.js",
-  "module": "lib/index.mjs",
-  "types": "lib/index.d.ts",
+  "types": "./lib/typings/index.d.ts",
   "files": [
     "lib"
   ],
