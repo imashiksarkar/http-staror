@@ -1,0 +1,15 @@
+{
+  "name": "local-npm-test",
+  "description": "Testing the npm locally before published.",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
+  }
+}

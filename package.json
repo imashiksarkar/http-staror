@@ -1,7 +1,7 @@
 {
-  "name": "http-status-error",
+  "name": "http-staror-monorepo",
   "version": "1.0.0",
-  "description": "",
+  "description": "This repo contains the library http-staror and testing envirnoment also github actions.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
