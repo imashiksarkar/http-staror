@@ -1,9 +1,9 @@
-# Http-Status-Error
+# Http-Staror
 
 ### With Typescript
 
 ```typescript
-import { Err, Http, Status } from "http-status-error"
+import { Err, Http, Status } from "http-staror"
 ```
 
 ```typescript

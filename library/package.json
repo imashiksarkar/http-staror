@@ -2,13 +2,13 @@
   "name": "http-staror",
   "description": "Makes easy to use HTTP status and errors.",
   "version": "1.0.0",
-  "homepage": "https://github.com/imashiksarkar/http-status-error#readme",
+  "homepage": "https://github.com/imashiksarkar/http-staror#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/imashiksarkar/http-status-error"
+    "url": "https://github.com/imashiksarkar/http-staror"
   },
   "bugs": {
-    "url": "https://github.com/imashiksarkar/http-status-error/issues"
+    "url": "https://github.com/imashiksarkar/http-staror/issues"
   },
   "type": "module",
   "main": "lib/index.js",
