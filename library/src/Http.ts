@@ -83,71 +83,71 @@ const HttpStatuses = {
   ConnectionTimedOut: { value: "ConnectionTimedOut", code: 601 },
   RequestTimedOut: { value: "RequestTimedOut", code: 602 },
   NameNotResolved: { value: "NameNotResolved", code: 603 },
-} as const
+} as const;
 
 // single value object type on HttpStatuses
 export interface IHttpStatus {
-  value: keyof typeof HttpStatuses
-  code: number
+  value: keyof typeof HttpStatuses;
+  code: number;
 }
 
 export const Status = HttpStatuses as {
-  [key in keyof typeof HttpStatuses]: IHttpStatus
-}
+  [key in keyof typeof HttpStatuses]: IHttpStatus;
+};
 
-type HttpStatusKeysType = keyof typeof HttpStatuses
+type HttpStatusKeysType = keyof typeof HttpStatuses;
 
-export type ExtendedHttpStatusKeysType = HttpStatusKeysType | `x-${string}`
+export type ExtendedHttpStatusKeysType = HttpStatusKeysType | `x-${string}`;
 
-export type setStatusParamType = ExtendedHttpStatusKeysType | IHttpStatus
+export type setStatusParamType = ExtendedHttpStatusKeysType | IHttpStatus;
 
 export interface IStatus {
-  status: ExtendedHttpStatusKeysType
-  statusCode: number
-  message: string
+  status: ExtendedHttpStatusKeysType;
+  statusCode: number;
+  message: string;
 }
 
 interface IStatusPrototype extends IStatus {
-  readonly setStatusCode: (statusCode: number) => IStatusPrototype
-  readonly setMessage: (message: string) => IStatusPrototype
+  readonly setStatusCode: (statusCode: number) => IStatusPrototype;
+  readonly setMessage: (message: string) => IStatusPrototype;
 }
 
 class Http implements IStatusPrototype {
-  declare readonly status: ExtendedHttpStatusKeysType
-  declare statusCode: number
-  declare message: string
+  declare readonly status: ExtendedHttpStatusKeysType;
+  declare statusCode: number;
+  declare message: string;
 
   static readonly setStatus = (status: setStatusParamType) => {
     // if status param is an onject then the value would be a string that exists inside of HttpStatuses
     if (status instanceof Object)
-      status = status.value as ExtendedHttpStatusKeysType
+      status = status.value as ExtendedHttpStatusKeysType;
     // remove x- if it is a custom status
     else if (status.startsWith("x-"))
-      status = status.slice(2) as ExtendedHttpStatusKeysType
+      status = status.slice(2) as ExtendedHttpStatusKeysType;
 
-    const statusObj = Object.create(new Http()) as IStatusPrototype
-    statusObj.status = status
+    const statusObj = Object.create(new Http()) as IStatusPrototype;
+    statusObj.status = status;
 
     // if the status exists in HttpStatus then the status code would be relative to the key otherwise a generic 200
     statusObj.statusCode =
       status in HttpStatuses
         ? HttpStatuses[status as HttpStatusKeysType].code
-        : 200
+        : 200;
 
-    statusObj.message = status
+    statusObj.message = status;
 
-    return statusObj
-  }
+    return statusObj;
+  };
 
   setStatusCode(statusCode: number) {
-    this.statusCode = statusCode
-    return this
+    this.statusCode = statusCode;
+    return this;
   }
 
   setMessage(message: string) {
-    this.message = message
-    return this
+    this.message = message;
+    return this;
   }
 }
 
-export default Http
+export default Http;

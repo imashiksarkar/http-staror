@@ -1,0 +1,73 @@
+{
+  "name": "http-status-err",
+  "description": "no description",
+  "version": "1.0.0",
+  "homepage": "https://github.com/imashiksarkar/http-status-error#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/imashiksarkar/http-status-error"
+  },
+  "bugs": {
+    "url": "https://github.com/imashiksarkar/http-status-error/issues"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/index.d.ts",
+        "default": "./lib/index.js"
+      },
+      "require": {
+        "types": "./lib/index.d.cts",
+        "default": "./lib/index.cjs"
+      }
+    }
+  },
+  "sideEffects": false,
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prepare": "npm run build",
+    "test": "vitest",
+    "test:once": "vitest run",
+    "coverage": "vitest run --coverage",
+    "build": "tsup",
+    "raff": "ts-node-dev --transpile-only ./src/__raff__/raff.ts",
+    "lint": "eslint \"src/**/*.ts*\" && tsc --noEmit",
+    "format": "prettier --write ./src",
+    "format.check": "prettier --check ./src",
+    "publish": "npm publish"
+  },
+  "keywords": [
+    "http",
+    "error",
+    "err",
+    "status",
+    "code",
+    "message",
+    "stack",
+    "production",
+    "dev"
+  ],
+  "author": "Ashik Sarkar <ashiksarkar.s18@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/eslint": "^8.44.1",
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "@typescript-eslint/parser": "^6.2.1",
+    "@vitest/coverage-v8": "^0.33.0",
+    "eslint": "^8.46.0",
+    "prettier": "^3.0.1",
+    "ts-node-dev": "^2.0.0",
+    "tsup": "^7.1.0",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.8",
+    "vitest": "^0.33.0"
+  }
+}
