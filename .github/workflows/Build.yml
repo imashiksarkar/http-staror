@@ -33,6 +33,8 @@ jobs:
         run: mv README.md library/
       - name: Inspect library
         run: cd library && ls
+      - name: Inspect root
+        run: ls
       # - name: Build
       #   run: cd library && npm run build
       # - uses: actions/upload-artifact@v3
