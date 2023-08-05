@@ -13,18 +13,30 @@ on:
   push:
     branches: [ga/test-1]
 jobs:
-  get_the_code_and_build:
+  unit-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Change Directory and Install Dependencies
         run: cd library && npm ci
       - name: Build
-        run: cd library && npm run build
-      - uses: actions/upload-artifact@v3
-        with:
-          name: lib
-          path: library/lib
+        run: cd library && npm run test
+
+  get_the_code_and_build:
+    runs-on: ubuntu-latest
+    needs: unit-test
+    steps:
+      - uses: actions/checkout@v3
+      # - name: Change Directory and Install Dependencies
+      #   run: cd library && npm ci
+      - name: inspect Dir
+        run: cd library && ls
+      # - name: Build
+      #   run: cd library && npm run build
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: lib
+      #     path: library/lib
   # download_artifact:
   #   runs-on: ubuntu-latest
   #   needs: change_directory
