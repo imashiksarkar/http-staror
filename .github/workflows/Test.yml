@@ -1,0 +1,13 @@
+name: Push Action
+on:
+  push:
+    branches: [master, ga/test-1]
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Change Directory and Install Dependencies
+        run: cd library && npm ci
+      - name: Test
+        run: cd library && npm run test
