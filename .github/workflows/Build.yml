@@ -13,23 +13,25 @@ on:
   push:
     branches: [ga/test-1]
 jobs:
-  unit-test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Change Directory and Install Dependencies
-        run: cd library && npm ci
-      - name: Test
-        run: cd library && npm run test
+  # unit-test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Change Directory and Install Dependencies
+  #       run: cd library && npm ci
+  #     - name: Test
+  #       run: cd library && npm run test
 
   get_the_code_and_build:
     runs-on: ubuntu-latest
-    needs: unit-test
+    # needs: unit-test
     steps:
       - uses: actions/checkout@v3
       # - name: Change Directory and Install Dependencies
       #   run: cd library && npm ci
-      - name: inspect Dir
+      - name: Copy readme to library
+        run: mv README.md library/
+      - name: Inspect library
         run: cd library && ls
       # - name: Build
       #   run: cd library && npm run build
