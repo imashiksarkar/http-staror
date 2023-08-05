@@ -5,7 +5,7 @@ import { onlyDev, onlyProd } from "./test-utils/env-controll";
 
 describe("Err", () => {
   it("should return status correctly", () => {
-    expect(Err.setStatus(Status.Accepted).status).toBe("Accepted");
+    expect(Err.setStatus(Status.Accepted).status).toBe("Accepte");
   });
   it("should return status code of 404", () => {
     expect(Err.setStatus(Status.NotFound).statusCode).toBe(404);

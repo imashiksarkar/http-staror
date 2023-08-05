@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Change Directory and Install Dependencies
         run: cd library && npm ci
-      - name: Build
+      - name: Test
         run: cd library && npm run test
 
   get_the_code_and_build:
