@@ -30,7 +30,7 @@ jobs:
       # - name: Change Directory and Install Dependencies
       #   run: cd library && npm ci
       - name: Copy readme to library
-        run: mv README.md library/
+        run: cp README.md library/
       - name: Inspect library
         run: cd library && ls
       - name: Inspect root
