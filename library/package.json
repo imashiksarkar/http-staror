@@ -42,7 +42,8 @@
     "lint": "eslint \"src/**/*.ts*\" && tsc --noEmit",
     "format": "prettier --write ./src",
     "format.check": "prettier --check ./src",
-    "publish": "npm publish"
+    "publish": "npm publish",
+    "version": "changeset && changeset version"
   },
   "keywords": [
     "http",
