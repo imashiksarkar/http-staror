@@ -57,3 +57,11 @@ jobs:
 
       - name: Inspect Library
         run: ls -R
+      
+      - name: Publish NPM package
+        run: npm run publish
+
+      - uses: actions/upload-artifact@v3 # upload library artifact
+        with:
+          name: log
+          path: /home/runner/.npm/_logs/ # or path/to/artifact
