@@ -1,7 +1,7 @@
 name: Push Action
 on:
   push:
-    branches: [master, ga/test-1]
+    branches: [master]
 jobs:
   unit-test:
     runs-on: ubuntu-latest
