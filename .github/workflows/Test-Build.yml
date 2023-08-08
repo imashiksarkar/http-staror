@@ -28,7 +28,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Inspect
+      - uses: actions/checkout@v3
+      - name: Inspect Root
         run: ls
       - name: Inspect library
         run: ls library
