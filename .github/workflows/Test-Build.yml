@@ -27,7 +27,7 @@ jobs:
         run: cd library && npm run build
 
       - name: Delete node_modules from library # list library
-        run: cd library && rm -rm node_modules
+        run: cd library && rm -rf node_modules
 
       - name: Inspect library # list library
         run: ls library
