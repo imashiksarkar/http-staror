@@ -45,13 +45,20 @@ jobs:
         with:
           name: library
 
-      - name: Display structure of downloaded files
-        run: ls -R
+      - name: Authenticate with npm
+        run: echo "//registry.npmjs.org/:_authToken={{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
 
-      # - name: Authenticate with npm
-      #   run: echo "//registry.npmjs.org/:_authToken={{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
+      - name: Check NPM Secret
+        run: cat ~/.npmrc
+
+      - name: List .npmrc
+        run: ls ~/ -a
+
+      # - name: Display structure of downloaded files
+      #   run: ls -R
+
       # - name: Publish NPM package
-      #   run: npm publish
+      #   run: npm run publish
       # - name: Inspect Root
       #   run: ls
       # - name: Inspect library
