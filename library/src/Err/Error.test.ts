@@ -63,15 +63,15 @@ describe("Err", () => {
   onlyDev(() => {
     it("should return err object correctly", () => {
       expect(
-        Err.setStatus(Status.OK)
-          .setMessage("OK..")
+        Err.setStatus(Status.Ok)
+          .setMessage("Ok..")
           .setStatusCode(201)
           .setIsOperational(true)
           .setWhere("Here")
           .setNoStack()
       ).toEqual({
-        status: "OK",
-        message: "OK..",
+        status: "Ok",
+        message: "Ok..",
         statusCode: 201,
         isOperational: true,
         where: "Here",
@@ -86,21 +86,21 @@ describe("Err", () => {
 
   describe("Production", () => {
     it("should return stack as null, while set to production", () => {
-      expect(Err.setProduction().setStatus(Status.OK).stack).toBe(null)
+      expect(Err.setProduction().setStatus(Status.Ok).stack).toBe(null)
     })
     it("should return stack as null, even if setMessage is called while production is true", () => {
       expect(
-        Err.setProduction().setStatus(Status.OK).setMessage("Hii").stack
+        Err.setProduction().setStatus(Status.Ok).setMessage("Hii").stack
       ).toBe(null)
     })
 
     it("should return stack that contain message, if setMessage is called", () => {
       expect(
-        Err.setProduction(false).setStatus(Status.OK).setMessage("Hii").stack
+        Err.setProduction(false).setStatus(Status.Ok).setMessage("Hii").stack
       ).toMatch("Hii")
     })
     it("should return stack that contain staus, if setMessage is called", () => {
-      expect(Err.setProduction(false).setStatus(Status.OK).stack).toMatch("OK")
+      expect(Err.setProduction(false).setStatus(Status.Ok).stack).toMatch("Ok")
     })
   })
 
@@ -122,9 +122,9 @@ describe("Err", () => {
   onlyProd(() => {
     describe("Implecite Production", () => {
       it("should return null while env is set to production", () => {
-        expect(Err.setStatus("OK").stack).toBe(null)
-        expect(Err.setStatus("OK").setWhere("here").where).toBe(null)
-        expect(Err.setStatus("OK").isProduction).toBe(true)
+        expect(Err.setStatus("Ok").stack).toBe(null)
+        expect(Err.setStatus("Ok").setWhere("here").where).toBe(null)
+        expect(Err.setStatus("Ok").isProduction).toBe(true)
       })
     })
   })

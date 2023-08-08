@@ -18,11 +18,11 @@ describe("Http", () => {
     expect(http instanceof Http).toBe(true)
   })
   it("should return status as mes if message is not given", () => {
-    const http = Http.setStatus(Status.OK)
+    const http = Http.setStatus(Status.Ok)
     expect(http).toEqual({
-      status: "OK",
+      status: "Ok",
       statusCode: 200,
-      message: "OK",
+      message: "Ok",
     })
   })
   it("should return status code of 404", () => {

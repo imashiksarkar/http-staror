@@ -11,7 +11,7 @@ describe("Keys", () => {
 
 describe("status", () => {
   it("should return 200, given a vadid input", () => {
-    const result = Status["OK"]
+    const result = Status["Ok"]
     expect(result.code).toBe(200)
   })
   it("should return null, given custom input", () => {
