@@ -1,7 +1,7 @@
 name: Release Action
 on:
-  release:
-    types: [created]
+  push:
+    branches: [master, ga/test-1]
 jobs:
   unit-test:
     runs-on: ubuntu-latest
