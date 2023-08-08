@@ -165,3 +165,10 @@ Err.setStatus("Ok")
   where: "inside main function"
 }
 ```
+
+### Status
+
+```typescript
+console.log(Status.Ok)
+// {value: "Ok", statusCode: 200}
+```
