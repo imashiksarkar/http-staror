@@ -1,0 +1,59 @@
+name: Release Action
+on:
+  push:
+    branches: [master]
+
+jobs:
+  # Test the library
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3 # get the code
+
+      - name: Change Directory and Install Dependencies
+        run: cd library && npm ci
+
+      - name: Test
+        run: cd library && npm run test
+
+  # Build the library
+  build_and_upload:
+    runs-on: ubuntu-latest
+    needs: unit-test
+    steps:
+      - uses: actions/checkout@v3 # get the code
+
+      - name: Copy readme to library # copy readme doc from home
+        run: cp README.md library/
+
+      - name: Change Directory and Install Dependencies
+        run: cd library && npm ci
+
+      - name: Build
+        run: cd library && npm run build
+
+      - name: Delete node_modules from library # list library
+        run: cd library && rm -rf node_modules
+
+      - name: Inspect library # list library
+        run: ls library
+
+      - uses: actions/upload-artifact@v3 # upload library artifact
+        with:
+          name: library
+          path: library/ # or path/to/artifact
+
+  # Publish to NPM
+  publish:
+    runs-on: ubuntu-latest
+    needs: build_and_upload
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: library
+
+      - name: Authenticate with npm
+        run: echo "//registry.npmjs.org/:_authToken={{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
+
+      - name: Inspect Library
+        run: ls -R
