@@ -1,4 +1,4 @@
-import Http, { Status } from "./Http";
-import Err from "./Error";
-export { Http, Err, Status };
-export default { Http, Err, Status };
+import Http, { Status } from "./Http/Http"
+import Err from "./Err"
+export { Http, Err, Status }
+export default { Http, Err, Status }

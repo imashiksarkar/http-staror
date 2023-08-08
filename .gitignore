@@ -39,3 +39,6 @@ tmp
 .DS_Store
 Thumbs.db
 *.pem
+
+
+http-staror-*.tgz
