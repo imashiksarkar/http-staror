@@ -57,9 +57,10 @@ jobs:
 
       - name: Inspect Library
         run: ls -R
-      
+
       - name: Publish NPM package
         run: npm run publish
+        continue-on-error: true # Continue even if this step fails
 
       - uses: actions/upload-artifact@v3 # upload library artifact
         with:
