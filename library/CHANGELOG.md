@@ -1,5 +1,11 @@
 # http-staror
 
+## 1.0.6
+
+### Patch Changes
+
+- npm error solution 1
+
 ## 1.0.5
 
 ### Patch Changes
