@@ -1,8 +1,10 @@
 name: Release Action
+# on:
+#   release:
+#     types: [created]
 on:
-  release:
-    types: [created]
-
+  push:
+    branches: [master]
 jobs:
   # Test the library
   unit-test:
@@ -53,22 +55,20 @@ jobs:
           name: library
 
       - name: Authenticate with npm
-        run: echo "//registry.npmjs.org:8080/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
+
+      - name: Set npm token
+        run: npm config set "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}"
 
       - name: Install Dependencies
         run: npm ci
-      # - name: Set npm token
-      #   run: npm set "//registry.npmjs.org:8080/:_authToken" ${{ secrets.NPM_AUTH_TOKEN }}
-
-      # - name: Login to npm
-      #   run: npm login
 
       - name: Inspect Library
         run: ls -R
 
       - name: Publish NPM package
         run: npm run publish
-        # continue-on-error: true # Continue even if this step fails
+        continue-on-error: true # Continue even if this step fails
 
       - uses: actions/upload-artifact@v3 # upload library artifact
         with:
