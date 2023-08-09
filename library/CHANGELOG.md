@@ -1,5 +1,11 @@
 # http-staror
 
+## 1.0.5
+
+### Patch Changes
+
+- - spelling corrected - doc for throwing error
+
 ## 1.0.4
 
 ### Patch Changes
