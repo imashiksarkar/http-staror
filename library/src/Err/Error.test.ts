@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest"
 
 import Err from "./Error"
-import { onlyDev, onlyProd } from "../utils/__test__/env-controll"
+import { onlyDev, onlyProd } from "../utils/__test__/control"
 import { Status } from "../Http"
 
 describe("Err", () => {
@@ -11,7 +11,7 @@ describe("Err", () => {
   it("should return status code of 404", () => {
     expect(Err.setStatus(Status.NotFound).statusCode).toBe(404)
   })
-  it("should return status code of 200, if custom satatus is provided and status code is not set explicitely", () => {
+  it("should return status code of 200, if custom status is provided and status code is not set explicitly", () => {
     expect(Err.setStatus("x-hii").statusCode).toBe(200)
   })
   onlyDev(() => {
@@ -48,17 +48,17 @@ describe("Err", () => {
   it("should have a value set to where", () => {
     expect(Err.setStatus(Status.Accepted).setWhere("here").where).toBe("here")
   })
-  it("should return where as null, if implecitely set to prod", () => {
+  it("should return where as null, if implicitly set to prod", () => {
     expect(
       Err.setProduction().setStatus(Status.Accepted).setWhere("here").where
     ).toBe(null)
   })
-  it("should return the correct unique identifire", () => {
-    const identifire = "this is unique"
+  it("should return the correct unique identifier", () => {
+    const identifier = "this is unique"
     expect(
-      Err.setStatus(Status.Accepted).setUniqueIdentifire(identifire)
-        .uniqueIdentifire
-    ).toBe(identifire)
+      Err.setStatus(Status.Accepted).setUniqueIdentifier(identifier)
+        .uniqueIdentifier
+    ).toBe(identifier)
   })
   onlyDev(() => {
     it("should return err object correctly", () => {
@@ -79,7 +79,7 @@ describe("Err", () => {
         filePath: null,
         isProduction: false,
         lineNumber: null,
-        uniqueIdentifire: null,
+        uniqueIdentifier: null,
       })
     })
   })
@@ -99,28 +99,28 @@ describe("Err", () => {
         Err.setProduction(false).setStatus(Status.Ok).setMessage("Hii").stack
       ).toMatch("Hii")
     })
-    it("should return stack that contain staus, if setMessage is called", () => {
+    it("should return stack that contain status, if setMessage is called", () => {
       expect(Err.setProduction(false).setStatus(Status.Ok).stack).toMatch("Ok")
     })
   })
 
-  describe("Explecite Production", () => {
+  describe("Explicit Production", () => {
     it("should return file path as null", () => {
       expect(
         Err.setProduction().setStatus(Status.Accepted).setFilePath(__filename)
           .filePath
       ).toBe(null)
     })
-    it("should return unique identifire as null", () => {
+    it("should return unique identifier as null", () => {
       expect(
-        Err.setProduction().setStatus(Status.Accepted).setUniqueIdentifire("a")
-          .uniqueIdentifire
+        Err.setProduction().setStatus(Status.Accepted).setUniqueIdentifier("a")
+          .uniqueIdentifier
       ).toBe(null)
     })
   })
 
   onlyProd(() => {
-    describe("Implecite Production", () => {
+    describe("Implicit Production", () => {
       it("should return null while env is set to production", () => {
         expect(Err.setStatus("Ok").stack).toBe(null)
         expect(Err.setStatus("Ok").setWhere("here").where).toBe(null)

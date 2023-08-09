@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest"
 import { Status } from "./index"
 
-import { onlyDev, onlyProd } from "./utils/__test__/env-controll"
+import { onlyDev, onlyProd } from "./utils/__test__/control"
 
 describe("Keys", () => {
   it("should have length of 66", () => {
@@ -10,7 +10,7 @@ describe("Keys", () => {
 })
 
 describe("status", () => {
-  it("should return 200, given a vadid input", () => {
+  it("should return 200, given a valid input", () => {
     const result = Status["Ok"]
     expect(result.code).toBe(200)
   })
@@ -20,7 +20,7 @@ describe("status", () => {
   })
 })
 
-describe("env-controll", () => {
+describe("env-control", () => {
   it("should  call the given function", () => {
     const mock = vi.fn().mockImplementation(() => {})
     onlyDev(mock)

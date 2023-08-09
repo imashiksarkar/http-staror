@@ -5,11 +5,11 @@ describe("Http", () => {
   it("should return http object correctly", () => {
     expect(
       Http.setStatus(Status.Accepted)
-        .setMessage("Hurrah, Successfull!")
+        .setMessage("Hurrah, Successful!")
         .setStatusCode(500)
     ).toEqual({
       status: "Accepted",
-      message: "Hurrah, Successfull!",
+      message: "Hurrah, Successful!",
       statusCode: 500,
     })
   })

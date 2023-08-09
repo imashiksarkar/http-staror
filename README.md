@@ -15,15 +15,15 @@ Http.setStatus("Accepted") // {status: 'Accepted',statusCode: 202,message: 'Acce
 ```typescript
 Http.setStatus("Accepted").setStatusCode(500) // { status: 'Accepted', statusCode: 500, message: 'Accepted' }
 
-// Note: If you don't set status code explecitely then the status code would be infered from the status you set.
+// Note: If you don't set status code explicitly then the status code would be inferred from the status you set.
 
-//Most of the time would not want to set the status code explecitely unless you are setting a custom status that does not exist in the package
+//Most of the time would not want to set the status code explicitly unless you are setting a custom status that does not exist in the package
 ```
 
 ```typescript
 Http.setStatus("Accepted").setStatusCode(500).setMessage("It is accepted") // { status: 'Accepted', statusCode: 500, message: 'It is accepted' }
 
-// Note: If you don't set a message explecitely then the message would be the same as status
+// Note: If you don't set a message explicitly then the message would be the same as status
 ```
 
 ```typescript
@@ -45,7 +45,7 @@ Http.setStatus("x-hello").setStatusCode(303).setMessage("custom status") // { st
  * setMessage()
  * setNoStack()
  * setStatusCode()
- * setUniqueIdentifire()
+ * setUniqueIdentifier()
  */
 ```
 
@@ -62,7 +62,7 @@ Err.setStatus("Ok").setMessage("custom status")
   stack: "Error: custom status"\n    at _a2.setMessage (http://localhost:5173/node_modules/.vite/deps/http-staror.js?v=a66ceed3:146:39)\n    at http://localhost:5173/src/main.ts:2:39"
   status: "Ok"
   statusCode: 202
-  uniqueIdentifire: null
+  uniqueIdentifier: null
   where: null
 }
 
@@ -81,7 +81,7 @@ Err.setProduction().setStatus("Ok").setMessage("Something Went Wrong!")
   stack: null
   status: "Ok"
   statusCode: 200
-  uniqueIdentifire: null
+  uniqueIdentifier: null
   where: null
 }
 
@@ -91,7 +91,7 @@ Err.setProduction().setStatus("Ok").setMessage("Something Went Wrong!")
 
 Err.setProduction(false).setStatus("Ok").setMessage("Something Went Wrong!")
 
-// Warning: You can also setProduction to false therefore it will will be set to development mode eventhough your application is running in production mode.
+// Warning: You can also setProduction to false therefore it will will be set to development mode even though your application is running in production mode.
 ```
 
 ```typescript
@@ -107,7 +107,7 @@ Err.setStatus("Ok").setMessage("Something Went Wrong!").setNoStack()
   stack: null
   status: "Ok"
   statusCode: 200
-  uniqueIdentifire: null
+  uniqueIdentifier: null
   where: null
 }
 
@@ -130,7 +130,7 @@ Err.setStatus("Ok")
   stack: null
   status: "Ok"
   statusCode: 200
-  uniqueIdentifire: null
+  uniqueIdentifier: null
   where: null
 }
 
@@ -148,7 +148,7 @@ Err.setStatus("Ok")
   .setFilePath("src/app.ts")
   .setWhere("inside main function")
   .setLineNumber(24)
-  .setUniqueIdentifire("axdf")
+  .setUniqueIdentifier("axdf")
   .setNoStack()
 
 // Output ⬇
@@ -161,7 +161,7 @@ Err.setStatus("Ok")
   stack: null
   status: "Ok"
   statusCode: 200
-  uniqueIdentifire: "axdf"
+  uniqueIdentifier: "axdf"
   where: "inside main function"
 }
 ```

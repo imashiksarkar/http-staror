@@ -10,7 +10,7 @@ interface IError extends IStatus {
   lineNumber: number | null
   filePath: string | null
   isOperational: boolean
-  uniqueIdentifire: string | null
+  uniqueIdentifier: string | null
   isProduction: boolean | null
   stack: string | null
 }
@@ -22,7 +22,7 @@ interface IErrorPrototype extends IError {
   readonly setLineNumber: (lineNumber: number) => IErrorPrototype
   readonly setFilePath: (filePath: string) => IErrorPrototype
   readonly setIsOperational: (isOperational?: boolean) => IErrorPrototype
-  readonly setUniqueIdentifire: (uniqueIdentifire: string) => IErrorPrototype
+  readonly setUniqueIdentifier: (uniqueIdentifier: string) => IErrorPrototype
   readonly setNoStack: () => IErrorPrototype
 }
 
@@ -33,7 +33,7 @@ class Err extends Http implements IErrorPrototype {
   declare where: string | null
   declare filePath: string | null
   declare lineNumber: number | null
-  declare uniqueIdentifire: string | null
+  declare uniqueIdentifier: string | null
   declare stack: string | null
 
   constructor() {
@@ -46,7 +46,7 @@ class Err extends Http implements IErrorPrototype {
   }
 
   static readonly setStatus = (status: setStatusParamType) => {
-    // if status param is an onject then the value would be a string that exists inside of HttpStatuses
+    // if status param is an object then the value would be a string that exists inside of HttpStatuses
     if (status instanceof Object)
       status = status.value as ExtendedHttpStatusKeysType
     // remove x- if it is a custom status
@@ -64,7 +64,7 @@ class Err extends Http implements IErrorPrototype {
     statusObj.where = null
     statusObj.filePath = null
     statusObj.lineNumber = null
-    statusObj.uniqueIdentifire = null
+    statusObj.uniqueIdentifier = null
     statusObj.stack = !__proto__.isProduction ? new Error(status).stack! : null
     return statusObj
   }
@@ -85,8 +85,8 @@ class Err extends Http implements IErrorPrototype {
     this.filePath = !this.isProduction ? filePath : null
     return this
   }
-  setUniqueIdentifire(uniqueIdentifire: string) {
-    this.uniqueIdentifire = !this.isProduction ? uniqueIdentifire : null
+  setUniqueIdentifier(uniqueIdentifier: string) {
+    this.uniqueIdentifier = !this.isProduction ? uniqueIdentifier : null
     return this
   }
   setNoStack() {

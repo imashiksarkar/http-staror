@@ -76,8 +76,8 @@ const HttpStatuses = {
     value: "NetworkAuthenticationRequired",
     code: 511,
   },
-  UnparseableResponseHeaders: {
-    value: "UnparseableResponseHeaders",
+  UnparsableResponseHeaders: {
+    value: "UnparsableResponseHeaders",
     code: 600,
   },
   ConnectionTimedOut: { value: "ConnectionTimedOut", code: 601 },
@@ -118,7 +118,7 @@ class Http implements IStatusPrototype {
   declare message: string
 
   static readonly setStatus = (status: setStatusParamType) => {
-    // if status param is an onject then the value would be a string that exists inside of HttpStatuses
+    // if status param is an object then the value would be a string that exists inside of HttpStatuses
     if (status instanceof Object)
       status = status.value as ExtendedHttpStatusKeysType
     // remove x- if it is a custom status
