@@ -166,6 +166,19 @@ Err.setStatus("Ok")
 }
 ```
 
+```typescript
+// you can throw error like this
+try {
+  //...do this
+} catch (error) {
+  throw Err.setStatus("InternalServerError").setWhere(
+    "getVideosDurationString()"
+  )
+}
+
+// This way structure of the error object is always same and predictable.
+```
+
 ### Status
 
 ```typescript
